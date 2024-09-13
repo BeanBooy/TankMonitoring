@@ -1,0 +1,135 @@
+:root {
+    --section-color: #313131;
+    --tank-color: #666666;
+    --liquid-color: #2fe0d8;
+    --status-color-ok: rgb(9, 211, 9);
+    --status-color-nok: rgb(255, 0, 55);
+
+    --pump-rotation: .4s;
+}
+
+
+
+body {
+    margin: 0;
+    background-color: black;
+}
+
+h2 {
+    font-family: system-ui;
+    color: white;
+    text-align: center;
+    margin: .5em 0 .8em;
+    font-weight: normal;
+}
+
+.content {
+    background-color: black;
+    max-width: 40em;
+    margin: 0 auto;
+    /*box-shadow: 0 0 10px 10px #222;*/
+}
+
+section {
+    margin: 1em .5em;
+    padding: 1em;
+    background-color: var(--section-color);
+    position: relative;
+    border-radius: 1em;
+}
+
+.status {
+    width: 1em;
+    aspect-ratio: 1;
+    position: absolute;
+    background-color: var(--status-color-ok);
+    border-radius: .5em;
+    top: 1em;
+    right: 1em;
+}
+
+.flex {
+    display: flex;
+}
+
+.tank {
+    flex: 1;
+    height: 10em;
+    background: linear-gradient(to top,
+        var(--liquid-color) 75%,
+        var(--tank-color) 0 );
+    position: relative;
+    border-radius: .5em;
+}
+
+.marker {
+    width: 1em;
+    height: .5em;
+    border-radius: 1em;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background-color: var(--section-color);
+}
+
+.marker:nth-child(1) { top: 15% }
+.marker:nth-child(2) { top: 30% }
+.marker:nth-child(3) { top: 50% }
+
+.pumpSide {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.pump {
+    border: 1em solid var(--liquid-color);
+    border-radius: 100%;
+    padding: .5em;
+    z-index: 1;
+}
+
+.turbine {
+    width: 3.5em;
+    aspect-ratio: 1;
+    background-image: url('assets/turbine.png');
+    background-size: cover;
+    position: relative;
+}
+
+.tube {
+    height: 1em;
+    width: 100%;
+    background: var(--liquid-color);
+    position: relative;
+    bottom: 1em;
+}
+
+
+/* generics */
+@keyframes rotating {
+    from {
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -ms-transform: rotate(-360deg);
+        -moz-transform: rotate(-360deg);
+        -webkit-transform: rotate(-360deg);
+        -o-transform: rotate(-360deg);
+        transform: rotate(-360deg);
+    }
+}
+.rotating {
+    -webkit-animation: rotating var(--pump-rotation) linear infinite;
+    -moz-animation: rotating var(--pump-rotation) linear infinite;
+    -ms-animation: rotating var(--pump-rotation) linear infinite;
+    -o-animation: rotating var(--pump-rotation) linear infinite;
+    animation: rotating var(--pump-rotation) linear infinite;
+}
+  
